@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+        <div class="infoperfil userdata">
+            <div class="infoperfiltitol"><h2>Perfil Usuario</h2>
+            </div>
+            <h3>Usuario: <i>{{ app.user.username }}</i></h3>
+            <h3>Email: <i>{{ app.user.email }}</i></h3>
+            <h3>Nombre: <i>{{ app.user.nombre }}</i></h3>
+            <h3>Apellido: <i>{{ app.user.apellido }}</i></h3>
+            <h3>Telefono: <i>{{ app.user.telefono }}</i></h3>
+            <h3>Razon Social: <i>{{ app.user.razon_social }}</i></h3>
+             <div class="upde">
+                <p>
+                 
+                  <a href="{{path("deleteuser")}}">Elimina Perfil</a>
+                   <a href="{{path("edituser")}}">Actualiza Perfil</a> 
+               </p>
+            </div>
+        </div>
+    {%endif%}
+{% endblock %}

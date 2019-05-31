@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% form_theme form _self %}
+
+{% block body %}
+    
+{% if app.user.role != "ROLE_ADMIN" %}
+    <h1>Can't create a league if you are not an admin.</h1>
+{% else %}
+    <div class="registerbox">
+        <h2>Nueva Marca</h2>
+        {{ form_start(form)}}
+        {{form_widget(form) }}
+           {{form_end(form) }}           
+       {{form_errors(form)}}        
+    </div>
+{% endif %}
+{% endblock %}

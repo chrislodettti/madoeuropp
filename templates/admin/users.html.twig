@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if app.user %}
+        {% if app.user.role == "ROLE_ADMIN" %}
+         <div class="admintable">  
+            <div class="admintodo">
+                  <div class="admintitle"><h2>Panel de control</h2></div>
+                <div class="admininfo"><a href="/adminpanel/users">Control Usuario</a></div>
+                <div class="admininfo"><a href="/adminpanel/vehicles">Control Vehiculo</a></div>
+                <div class="admininfo"><a href="/adminpanel/contactos">Control Contactos</a></div>
+              </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Razon social</th>
+                <th>Telefono</th>
+                <th>Role</th>
+                <th>Email</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                {%if user.role != "ROLE_ADMIN"%}
+                {%set flag = 0 %}
+                <tr>
+                <td>{{user.nombre}}</td>
+                <td>{{user.apellido}}</td>
+                <td>{{user.razon_social}}</td>
+                <td>{{user.telefono}}</td>
+                <td>{{user.role}}</td>
+                <td>{{user.email}}</td>
+                <td><a href="/adminpanel/{{user.id}}/edituser">Editar</a></td>
+                <td><a href="/adminpanel/{{user.id}}/deleteuser">Eliminar</a></td>
+              </tr>
+              {%endif%}
+            {%endfor%}
+            </tbody>
+          </table>
+         </div>
+    {% endif %}
+    
+    {% endif %}
+{% endblock %}

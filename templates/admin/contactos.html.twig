@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if app.user %}
+        {% if app.user.role == "ROLE_ADMIN" %}
+         <div class="admintable">  
+            <div class="admintodo">
+                 <div class="admintitle"><h2>Panel de control</h2></div>
+                <div class="admininfo"><a href="/adminpanel/users">Control Usuario</a></div>
+                <div class="admininfo"><a href="/adminpanel/vehicles">Control Vehiculo</a></div>
+                <div class="admininfo"><a href="/adminpanel/contactos">Control Contactos</a></div>
+              </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>apellido</th>
+                <th>Email</th>
+                 <th>Mensaje</th>
+                <th>Telefono</th>
+              </tr>
+            </thead>
+            <tbody>
+             {% for contactos in contactos %}
+                <tr>
+                <td>{{contactar.nombre}}</td>
+                <td>{{contactar.apellido}}</td>
+                <td>{{contactar.email}}</td>
+                <td>{{contactar.mensaje}}</td>
+                <td>{{contactar.telefono}}</td>
+                </tr>
+            {%endfor%}
+            </tbody>
+          </table>
+         </div>
+    {% endif %}
+    
+    {% endif %}
+{% endblock %}

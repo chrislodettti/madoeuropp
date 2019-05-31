@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if app.user %}
+            {% if app.user.role == "ROLE_ADMIN" %}
+              <div class="admintodo">
+                 <div class="admintitle"><h2>Panel de control</h2></div>
+                <div class="admininfo"><a href="/adminpanel/users">Control Usuario</a></div>
+                <div class="admininfo"><a href="/adminpanel/vehicles">Control Vehiculos</a></div>
+                 <div class="admininfo"><a href="/adminpanel/contactos">Control Contactos</a></div>
+              </div>
+         {% endif %}    
+    {% endif %} 
+{% endblock %}

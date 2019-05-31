@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% form_theme form _self %}
+
+{% block body %}
+    
+{% if app.user.role != "ROLE_USER" %}
+    <h5>Añadido a nuestra lista de vehiculos</h5>
+{% else %}
+    <div class="registerbox">
+        <h2>Vehiculo nuevo</h2>
+         <h5>Añade tu vehiculo para vender</h5>
+        {{ form_start(form)}}
+        {{form_widget(form) }}
+           {{form_end(form) }}           
+       {{form_errors(form)}}        
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block form_errors %}
+{% if errors|length >0 %}
+    <ul>
+        {% for error in errors %}
+        <li class="error-message">{{error.message}}</li>
+ {% endfor %}
+        </ul>
+{%endif%}    
+{% endblock form_errors %}
+
+
+

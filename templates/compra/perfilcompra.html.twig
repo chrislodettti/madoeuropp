@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+        <div class="infoperfil userdata">
+            <div class="infoperfiltitol"><h2>Tu Compra</h2></div>
+            <h3>Marca: <i>{{ compra.marca }}</i></h3>
+            <h3>Modelo: <i>{{ compra.modelo }}</i></h3>
+            <h3>Price: <i>{{ compra.price }}</i></h3>
+                <p>
+                  <a href="{{path("deletecompra")}}">Elimina Compra</a>
+               </p>
+            </div>
+        </div>
+    {%endif%}
+{% endblock %}
+{# empty Twig template #}

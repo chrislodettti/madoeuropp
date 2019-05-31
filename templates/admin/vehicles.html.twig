@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if app.user %}
+        {% if app.user.role == "ROLE_ADMIN" %}
+         <div class="admintable">  
+            <div class="admintodo">
+                  <div class="admintitle"><h2>Panel de control</h2></div>
+                <div class="admininfo"><a href="/adminpanel/users">Control Usuario</a></div>
+                <div class="admininfo"><a href="/adminpanel/vehicles">Control Vehiculos</a></div>
+                <div class="admininfo"><a href="/adminpanel/contactos">Control Contactos</a></div>
+              </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Modelo</th>
+                <th>Marca</th>
+                <th>Km</th>
+                <th>Plazas</th>
+                <th>Puertas</th>
+                <th>Cambio</th>
+                <th>Combustible</th>
+                <th>Logo</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for vehicle in vehicles %}
+                <tr>
+                <td>{{vehicle.modelo}}</td>
+                <td>{{vehicle.marca}}</td>
+                <td>{{vehicle.Km}}</td>
+                <td>{{vehicle.plazas}}</td>
+                <td>{{vehicle.puertas}}</td>
+                <td>{{vehicle.Cambio}}</td>
+                  <td>{{vehicle.Combustible}}</td>
+                 <td>{{vehicle.logo}}</td>
+                  <td><a href="/adminpanel/{{vehicle.id}}/deletevehicle">Eliminar</a></td>
+              </tr>
+            {%endfor%}
+            </tbody>
+          </table>
+         </div>
+    {% endif %}
+    
+    {% endif %}
+{% endblock %}

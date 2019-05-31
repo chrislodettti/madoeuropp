@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/slider.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+        {%if app.user.role == "ROLE_USER" %}
+            <!-- the options -->
+             <div class="automovl">
+            <form action="{{path("createvehicles")}}">
+                <div class="vehitodo">
+                    <br>
+                    <h2>Añade tu vehiculo!</h2>
+                    <p>Puedes vender tu vehiculo desde aqui</p>
+                    <button type="submit">Añadir Vehiculo</button>
+                </div>
+            </form>
+              <form action="{{path("detallcompras")}}">
+                  <div class="vehitodo">
+                      <br>
+                    <h2>Compra tu vehiculo!</h2>
+                    <p>Compra el vehiculo!</p>
+                    <button type="submit">Compra</button>
+                </div>
+            </form>
+                 <form action="{{path("contact")}}">
+                  <div class="vehitodo">
+                      <br>
+                    <h2>Contacta con nosotros!</h2>
+                    <p>Para mas informacion!</p>
+                    <button type="submit">Contacta</button>
+                </div>
+            </form>
+        </div>
+                  <br>
+        {%else%}
+        {%endif%}
+    {%else%}
+        
+        <div class="slider">
+                       <div class="content"> 
+                        <div class="content-txt"> 
+                        <h1>Compra tu Vehiculo </h1> 
+                        <h2> Los mejores precios del mercado! </h2> 
+                        </div> 
+                        </div> 
+                       <div class="images"> 
+                        <img src="{{ asset('assets/images/imagen4.jpg') }}"> 
+                    </div> 
+                       <div class="slider">
+                       <div class="content"> 
+                        <div class="content-txt"> 
+                         <h1> Elige tu marca </h1> 
+                         <h2> Las mejores marcas! </h2> 
+                        </div> 
+                        </div> 
+                       <div class="images"> 
+                         <img src="{{ asset('assets/images/imagen3.jpg') }}"> 
+                    </div>
+                  </div>
+                    
+        </div>
+        
+       
+    {% endif %}  
+{% endblock %}

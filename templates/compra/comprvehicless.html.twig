@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+  {{ parent() }}
+
+{% endblock %}
+
+{% block body %}
+    <div class="todopack">
+    {% for vehicle in vehicless %}
+        <div class="thisteamall">
+          <div id="inf">
+            <div class="infotodo">
+                <h2>Modelo{{ vehicle.modelo }}</h2>
+                <h3>Marca: <i>{{ vehicle.marca }}</i></h3>
+                <h3>Km: <i>{{ vehicle.Km }}</i></h3>
+                <h3>Color: <i>{{ vehicle.color }}</i></h3>
+                <h3>Puertas: <i>{{ vehicle.puertas }}</i></h3>
+                <h3>Plazas: <i>{{ vehicle.plazas }}</i></h3>
+                <h3>Cambio: <i>{{ vehicle.Cambio }}</i></h3>
+                <h3>Combustible: <i>{{ vehicle.Combustible}}</i></h3>
+                <h3>Price: <i>{{ vehicle.price }}</i></h3>
+                  <div class="compraveh">
+                   <a href="{{path("contact")}}">Comprar Vehiculo</a>
+                  </div>
+            </div>
+        </div>
+
+        {%endfor%}
+        
+        </div>
+        
+    </div>
+        
+{% endblock %}
