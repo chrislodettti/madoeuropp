@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PerfilController!{% endblock %}
+
+{% block body %}
+<div class="datos">
+    <a class="datos1" href="{{ path('app_perfil_cambiar',{'id':app.user.id} )}}">Los datos</a>
+    {% if is_granted("ROLE_ADMIN") %}
+    <a  class="datos2" href="{{ path('app_admin' )}}">Admin</a>
+{% endif %}
+</div>
+    <a></a>
+{% endblock %}

@@ -1,22 +1,58 @@
 {% extends 'base.html.twig' %}
-{% form_theme form _self %}
+
+{% block title %}Hello Contactar!{% endblock %}
 
 {% block body %}
-    <div class="registerbox">
-        <h2>Contacta</h2>
-        {{ form_start(form)}}
-        {{form_widget(form) }}
-           {{form_end(form) }}           
-       {{form_errors(form)}}        
-    </div>
-{% endblock %}
 
-{% block form_errors %}
-{% if errors|length >0 %}
-    <ul>
-        {% for error in errors %}
-        <li class="error-message">{{error.message}}</li>
- {% endfor %}
-        </ul>
-{%endif%}    
-{% endblock form_errors %}
+<div class="rutinabloque">
+    <div  style="color: white;text-align: center;">
+
+        <form>
+            <fieldset class="fieldset fieldset--hidden">
+                <legend class="visually-hidden">Contacto Form</legend>
+                <div class="field">
+                    <div class="field__input-wrapper">
+                        <label class="field__label" for="email">Email </label>
+                        <input placeholder="Email" class="field__input" autocapitalize="off" spellcheck="false" aria-required="true" type="email" name="email" id="email">
+                    </div>
+                </div>
+
+                <div class="field field--half">
+                    <div class="field__input-wrapper">
+                        <label class="field__label" for="last_name">Nombre</label>
+                        <input placeholder="Nombre" class="field__input" aria-required="true" type="text" name="first_name" id="first_name">
+                    </div>
+                </div>
+
+                <div class="field field--half">
+                    <div class="field__input-wrapper">
+                        <label class="field__label" for="last_name">Apellidos</label>
+                        <input placeholder="Apellido" class="field__input" aria-required="true" type="text" name="first_name" id="last_name">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field__input-wrapper">
+                        <label class="field__label" for="address">Direccion</label>
+                        <input placeholder="Direccion" class="field__input" aria-required="true" type="text" name="address" id="address">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="field__input-wrapper">
+                        <label class="field__label" for="phone">Telefono</label>
+                        <input placeholder="Telefono" class="field__input" aria-required="true" type="tel" name="phone" id="phone">
+                    </div>
+                </div>
+
+            </fieldset>
+            <div class="form__footer">
+                <button name="button" type="submit" class="form__submit btn btn--cta btn--large" data-trekkie-id="complete_order_button" aria-busy="false">
+                    <span class="btn__content">Enviar</span>
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

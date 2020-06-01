@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hola AdminController!{% endblock %}
+
+{% block body %}
+    <div class="rutinabloque">
+    <div style="color:white;">
+    {% if is_granted('ROLE_ADMIN') %}
+        <h1 align="center">Administración de datos</h1><br>
+        <div align="center" class="centro">
+        {% for user in users %}
+            <a class="nygga" href="/admin/{{ user.id }}">{{ user.email }}</a>
+            <a class="btn btn-dark edit-user nygga" href="/admin/edit/{{ user.id }}">Editar</a>
+            <a class="btn btn-danger delete-user nygga" href="{{ path('app_user_delete',{'id':user.id} )}}" data-id="{{
+            user.id}}"> Eliminar usuario: {{ user.id }}</a><br>
+        {% endfor %}
+    {% endif %}
+    </div>
+    </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/AdminJS.js') }}"></script>
+{% endblock %}

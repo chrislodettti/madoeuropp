@@ -109,7 +109,7 @@ class UserController extends Controller
     }
     
     /**
-     * @Route("/profile/deleteuser",name="deleteuser")
+     * @Route("/perfil/formaedit",name="deleteuser")
      */
     public function deleteUser(Request $request, TokenStorageInterface $tokenStorage)
     {

@@ -1,15 +1,18 @@
-
 {% extends 'base.html.twig' %}
 
 {% block body %}
     <div id="fondoreg">
         <div id="margin-reg">
-            <h2 id="regtitulo">Registrate</h2>
-            <div id="registro">
+            <div id="editaperf"  class="col-lg-4 box-form">
+                <h2 id="regtitulo">Editar Perfil</h2>
                 <div class="reg-form">
                     {{ form_start(form) }}
                     {{ form_widget(form) }}
-                    <input type="submit" class="btn btn-success" value="Registrate">
+                    <input type="submit" class="btn btn-success" value="Guardar Cambios">
+               
+                    <br>
+                    <br>
+                    <a class="volver" href="{{ path('app_perfil') }}">Volver al Perfil</a>
                     {{ form_errors(form) }}
                     {{ form_end(form) }}
                 </div>

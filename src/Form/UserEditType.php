@@ -12,11 +12,11 @@ namespace App\Form;
    use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
    use Symfony\Component\OptionsResolver\OptionsResolver;
    
-   class RegisterType extends AbstractType{
+   class UserEditType extends AbstractType{
        public function buildForm(FormBuilderInterface $builder, array $options) {
             $builder
                     ->add('nombre', TextType::class,[
-                        'label'=>'Nombre',
+                        'label'=>'Nombre Perfil',
                         'required'=>'required',
                         'attr'=>[
                             'class'=>'form-username form-control'
@@ -24,7 +24,7 @@ namespace App\Form;
                     ])
                     
                     ->add('apellido', TextType::class,[
-                        'label'=>'Apellido',
+                        'label'=>'Apellido Perfil',
                         'required'=>'required',
                         'attr'=>[
                             'class'=>'form-username form-control'
@@ -40,7 +40,7 @@ namespace App\Form;
                     ])
                     
                     ->add('telefono', TextType::class,[
-                        'label'=>'Telefono',
+                        'label'=>'Telefono Contacto',
                         'required'=>'required',
                         'attr'=>[
                             'class'=>'form-username form-control'
@@ -54,23 +54,11 @@ namespace App\Form;
                             'class'=>'form-username form-control'
                         ]
                     ])
-                     ->add('password', RepeatedType::class,[
-                        'type'=>PasswordType::class,
-                        'required'=>'required',
-                        'first_options'=>['label'=>'Password',
-                            'attr'=>[
-                            'class'=>'form-password form-control'
-                        ]],
-                        'second_options'=>['label'=>'Repeat Password',
-                            'attr'=>[
-                                'class'=>'form-password form-control'
-                            ]]
-                    ])
                     ->add('email', EmailType::class,[
-                        'label'=>'Indica Email',
+                        'label'=>'Email/Correo electronico',
                         'required'=>'required',
                         'attr'=>[
-                            'class'=>'form-username form-control'
+                            'class'=>'form-email form-control'
                         ]
                     ]);
 
@@ -84,5 +72,3 @@ namespace App\Form;
         }
        
    }
-
-

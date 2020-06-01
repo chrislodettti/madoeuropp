@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Informacion{% endblock %}
+
+{% block body %}
+
+
+<div>
+
+
+    <p id="subtitulo">Nosotros Madoeurop</p>
+    <div id="almilialeregalaronelcredito">
+        <div class="columnanut"><a href="{{ path('uva') }}"><img class="imgnut" src="imagenes/todo/viñedo_ext.jpg" alt="Imagen uva" /></a></div>
+        <div class="columnanut"><a href="{{ path('almacen') }}"><img class="imgnut" alt="Imagen bodega" src="imagenes/todo/bodega_interior.jpg"/></a> </div>
+        <div class="columnanut"><a href="{{ path('historia') }}"><img class="imgnut" alt="Imagen nosotros" src="imagenes/todo/viñedo_ext.jpg"/></a> </div>
+        
+        <div class="columnanut"><a class="blanco" href="{{ path('uva') }}">Nuestra Uva</a></div>
+        <div class="columnanut"><a class="blanco" href="{{ path('almacen') }}">Nuestra bodega </a></div>
+       <div class="columnanut"><a class="blanco" href="{{ path('historia') }}">Nosotros </a></div>
+       
+         <div class="columnanut"><a href="{{ path('blanco') }}"><img class="imgnut" alt="Imagen blanco" src="imagenes/todo/vino_ext.jpg" /></a></div>
+        <div class="columnanut"><a href="{{ path('tinto') }}"><img class="imgnut" alt="Imagen tinto" src="imagenes/todo/vino_ext.jpg" /></a></div>
+        <div class="columnanut"><a href="{{ path('rosado') }}"><img class="imgnut"alt="Imagen rosado" src="imagenes/todo/vino_ext.jpg" /></a></div>
+
+        <div class="columnanut"><a class="blanco" href="{{ path('blanco') }}"> Nuestro Vino Blanco</a></div>
+        <div class="columnanut"><a class="blanco" href="{{ path('tinto') }}">Nuestro Vino Tinto</a></div>
+        <div class="columnanut"><a class="blanco" href="{{ path('rosado') }}">Nuestro Vino Rosado</a></div>
+
+
+    </div>
+        </body>
+
+
+
+
+
+</div>
+{% endblock %}

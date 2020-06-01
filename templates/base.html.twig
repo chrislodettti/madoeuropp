@@ -1,73 +1,115 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-          <title>{% block title %}EURENT{% endblock %}</title>
+         <meta charset=utf-8" />
+    <title>{% block title %}MadoEurop{% endblock %}</title>
         {% block stylesheets %}
-         <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"/>
+         
+        <link rel="stylesheet" href="{{ asset('asset/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('asset/css/responsive.css') }}">
+        <link href="{{ asset('asset/js/index.js') }}">
+           <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
         {% endblock %}
     </head>
     <body>
-         <header>
-             <a <h1 href="{{path("homeaction")}}"><div class="my-logo"></div></a>
-        </header>
-           <nav class="topnav" id="myTopnav">
-            {% if app.user %}
-                <a href="{{path("logout")}}">Salir</a>
-                <a href="{{path("profile")}}">Perfil</a>
-              <a href="{{path("detallcompras")}}">Compra</a>
-                <a href="{{path("vehicles")}}">Vehiculo</a>
-            {%else%}
-                <a href="{{path("register")}}">Registro</a>
-                <a href="{{path("login")}}">Inicio</a>
-                <a href="{{path("vehicles")}}">Vehiculo</a>
-               <a href="{{path("contact")}}">Contacta</a>
-            {%endif%}
-            
-            
-            
-            
-            
-            
-            
- <a href="javascript:void(0);" class="icon" onclick="deployMenu()">&#9776;</a>
-          </nav>
+        <div id="menu">
+    <div id="menui"><p id="logo"><a id="letra-logo" href="{{ path('homeaction') }}">MadoEurop</a>
+    </div>
+<div id="menum">
+            <nav class="main-nav">
+                <ul>
+                 {% if app.user is null %}
+                <li id="focus"><a class="letra-menu separacion menu-link" href="{{ path('infovino') }}">Productos</a></li>
+                <li><a class="letra-menu separacion menu-link" href="{{ path('infodatox') }}">Campaña</a></li>
+                <li><a class="letra-menu separacion menu-link" href="{{ path('infodato') }}">Nosotros</a></li>
+      
+                <li class="menu-trigger"> <a href="#"><i class="zmdi zmdi-menu"></i></a></li>
+
+                  {% else %}
+                <li id="focus"><a class="letra-menu separacion menu-link" href="{{ path('infovino') }}" >Productos</a></li>
+                <li><a class="letra-menu separacion menu-link"  href="{{ path('infodatox') }}">Campaña</a></li>
+                <li><a class="letra-menu separacion menu-link" href="{{ path('infodato') }}">Nosotros</a></li>
+
+                <li class="menu-trigger"> <a href="#"><i class="zmdi zmdi-menu"></i></a></li>
+                 {% endif %}
+
        
-            <div class="body-container">
-        {% block body %}
-        {% endblock %}
-            </div>
-            <footer>
-                {% if app.user %}
-                 <div class="classAdminoptions">
-                {%if app.user.role == "ROLE_ADMIN"%}
-                    <a href="{{path("adminpanel")}}" class="admincontrl">Panel de control</a>
-                {%endif%}
+        </ul>
+            </nav>
+
+    </div>
+    <aside class="menu">
+        <div class="menu-inner">
+            <p class="menu-close"> <a href="#"><i class="zmdi zmdi-close"></i></a></p>
+            <ul class="menu-pages">
+                {% if app.user is null %}
+               
+                <li class="menu-page-link"><a ><a>Inicio</a></li><br>
+                <li class="menu-page-link"><a >Productos</a></li><br>
+               
+
+                <li class="menu-page-link"><a >Alimentacion</a></li>
+                 {% else %}
+               
+                <li class="menu-page-link"><a ><a >Inicio</a></li><br>
+                <li class="menu-page-link"><a >Productos</a></li><br>
+                <li class="menu-page-link"><a >Producto</a></li><br>
+                <li class="menu-page-link"><a>Alimentacion</a></li>
+                 {% endif %}
+              
+            </ul>
+        </div>
+    </aside>
+    <div id="menud">
+       {% if app.user is null %}
+         <a id="login-button" class="inicios" href="{{ path('login') }}">Iniciar Sesión</a>
+
+        <div class="login-container">
+            <form class="login-form" action="{{ path('login') }}" method="post">
+
+                <input type="text" placeholder="Email" id="email" name="_username" class="form-control"/>
+
+
+                <input type="password" placeholder="Contraseña" id="password" name="_password" class="form-control"/>
+
+                <button id="entrar" type="submit" class="btn btn-success">Ir</button>
+            </form>
+        </div>
+        <a id="reg-button" class="registro" href="{{ path('register') }}">Registrarse</a>
+    {% else %}
+
+        <a class="salir"href="{{ path('app_perfil') }}">Perfil {{ app.user.username }}</a>
+        <a class="salir" href="{{ path('logout') }}">Salir</a>
+    {% endif %}
+</div>
+    </div>
+<div class="overlay hide"></div>
+ 
+{% block body %}{% endblock %}
+<script  src="js/index.js"></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script  src="js/indexx.js"></script>
+<br>
+<br> 
+<br>
+<footer>
+    <div id="debajo">
+        <ul>
+            <li><a class="letra-footer separacionfooter separacion" href="#slide-two">Facebook</a></li>
+            <li><a class="letra-footer separacion" href="#slide-three">Twitter</a></li>
+            <li><a class="letra-footer separacion" href="#slide-four">Instagram</a></li>
+          <li><a class="letra-footer separacion "href="{{ path('contact') }}">Contacto</a></li>
+        </ul>
+    </div>
+</footer>
+   <div id="cookies" class="bottom-popup">
+                    <p>Solicitamos su permiso para obtener datos estadísticos de su navegación en esta web, en cumplimiento del Real
+                        Decreto-ley 13/2012. Si continúa navegando consideramos que acepta el uso de cookies.</p>
+                    <button>Aceptar cookies</button>
                 </div>
-                {%endif%}
-            </footer>
-        {% block javascripts %}
-              <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-              <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-              <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-                <script>
-                    //Cambia menu a Telefono
-                function deployMenu() {
-                    var x = document.getElementById("myTopnav");
-                    if (x.className === "topnav") {
-                        x.className += " responsive";
-                    } else {
-                        x.className = "topnav";
-                    }
-                    var y = document.getElementById("down");
-                    if(y.className==="dropdown"){
-                        y.className += " displayme";
-                    }else{
-                        y.className = "dropdown";
-                    }
-                    
-                }
-                </script>
-        {% endblock %}
-    </body>
+      
+</body>
 </html>
