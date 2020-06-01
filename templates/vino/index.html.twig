@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Producto!{% endblock %}
+ 
+{% block body %}
+    <p id="subtitulo">Nuestros Productos</p>
+   <div class="todopack">
+    {% for vino in vinos %}
+         <div id="todocolum">
+             <div id="inf">
+                 <h1><i> {{ vino.nombre}}</i></h1>
+             <div> <img class="imgvino" src="{{ asset('imagenes/todo/' ~ vino.logo) }}"</a></div>
+             <h3><i> {{ vino.price}}</i></h3>
+         <br>
+         <div class = "bot"><h2><a class="blanco" href="{{ path('prodvino',{'id':vino.id}) }}">Ver producto </a></h2></div>
+        </div>
+         </div>
+                    {% endfor %}
+</div>
+    
+    
+{% endblock %}
+   
+

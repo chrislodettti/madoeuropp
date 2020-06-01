@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% form_theme form _self %}
+
+{% block body %}
+    
+{% if app.user.role != "ROLE_USER" %}
+    <h5>Añadido a nuestra lista un nuevo vino</h5>
+{% else %}
+    <div id="fondoreg">
+        <div id="margin-reg">
+            <h2 id="regtitulo">Vino nuevo, Añade tu vino</h2>
+            <div id="registro">
+                <div class="reg-form">
+        {{ form_start(form)}}
+        {{form_widget(form) }}
+           {{form_end(form) }}           
+       {{form_errors(form)}}        
+    </div>
+     </div>
+            </div>
+        </div>
+{% endif %}
+{% endblock %}
+
+{% block form_errors %}
+{% if errors|length >0 %}
+    <ul>
+        {% for error in errors %}
+        <li class="error-message">{{error.message}}</li>
+ {% endfor %}
+        </ul>
+{%endif%}    
+{% endblock form_errors %}
+
+

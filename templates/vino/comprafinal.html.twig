@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block title %}Compra!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+<script>
+     function Iva (a) {
+        value=(0.21)*a;
+        document.getElementById('IVA').innerHTML="  IVA: "+value+"€";
+        document.getElementById('total').innerHTML=Math.round((value+a+10)*100)/100+"€";
+    }
+     Iva({{ vino.price }});
+</script>
+{% endblock %}
+{% block body %}
+<h1>Compra</h1>
+     <div class="container margin_scroll">
+        <div class="row justify-content-center">
+            <div class="colbox-form">
+                <h2 class="text-center">Register</h2>
+                {{form_start(form)}}
+                <div class="row">
+                    <div class="co-12">
+                        {{ form_row(form.owner) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        {{ form_row(form.number) }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{ form_row(form.cvv) }}
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{ form_row(form.endDate) }}
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-navegar mt-4" value="Compra">
+                {{ form_errors(form) }}
+                {{ form_end(form) }}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

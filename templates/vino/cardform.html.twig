@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts %}
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+              <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    {{ parent() }}
+<script>
+     function Iva (a) {
+        value=(0.21)*a;
+        document.getElementById('IVA').innerHTML="  IVA: "+value+"€";
+        document.getElementById('total').innerHTML=Math.round((value+a+10)*100)/100+"€";
+    }
+     Iva({{ vino.price }});
+</script>
+{% endblock %}
+{% block body %}
+
+            <div id="fondoreg">
+        <div id="margin-reg">
+            <h2 id="regtitulo">Datos de compra</h2>
+            <div id="registro">
+                <div class="reg-form">
+                    {{ form_start(form) }}
+                   {{ form_row(form.owner) }}
+                   {{ form_row(form.number) }}
+                   {{ form_row(form.cvv) }}
+                   {{ form_row(form.endDate) }}
+                   {{ form_row(form.direccion) }}
+                        <h5 id="IVA"></h5>
+                     <h5>Envio: 10€</h5>
+                    <h5 class="align-self-center">Total:</h5>
+                     <h2 class="align-self-center" id="total"></h2>
+                    <input type="submit" class="btn btn-success" value="Continua">
+                    {{ form_errors(form) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+              
+{% endblock %}
